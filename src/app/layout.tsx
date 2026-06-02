@@ -16,10 +16,10 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   authors: [{ name: 'Matthew Delaney' }],
-  description: 'A non-technical blog by Matthew Delaney',
-  metadataBase: new URL('https://mldelaney94.com'), // Update this to your actual domain
+  description: 'A technical blog by Matthew Delaney',
+  metadataBase: new URL('https://technical.mldelaney94.com'), // Update this to your actual domain
   openGraph: {
-    description: 'A non-technical blog by Matthew Delaney',
+    description: 'A technical blog by Matthew Delaney',
     locale: 'en_US',
     siteName: 'Matthew Delaney',
     title: 'Matthew Delaney',
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary',
-    description: 'A non-technical blog by Matthew Delaney',
+    description: 'A technical blog by Matthew Delaney',
     title: 'Matthew Delaney',
   },
 }
