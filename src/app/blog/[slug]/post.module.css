@@ -1,0 +1,167 @@
+.main {
+  display: grid;
+  grid-template-columns:
+    1fr
+    min(65ch, 100%)
+    1fr;
+  padding: 2rem 0;
+}
+
+.main > * {
+  grid-column: 2;
+}
+
+.fullBleed {
+  width: 100%;
+  grid-column: 1 / -1;
+}
+
+.nav {
+  margin-top: 0;
+}
+
+.nav a {
+  color: var(--foreground);
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.nav a:hover {
+  opacity: 1;
+}
+
+.article {
+  line-height: 1.7;
+  margin-top: 2rem;
+}
+
+.header {
+  padding-bottom: 2rem;
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--foreground) 15%, transparent);
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.header time {
+  display: block;
+  font-size: 0.9rem;
+  opacity: 0.6;
+  margin-top: 0.75rem;
+}
+
+.tags {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.tag {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  background: color-mix(in srgb, var(--foreground) 10%, transparent);
+  border-radius: 4px;
+}
+
+/* Content / prose styles */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  font-size: 1.1rem;
+  margin-top: 3rem;
+  line-height: 1.7;
+}
+
+/* Heading sizes */
+.content h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+.content h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+/* Links */
+.content a {
+  color: #0070f3;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.content a:hover {
+  text-decoration: none;
+}
+
+/* Lists */
+.content ul,
+.content ol {
+  padding-left: 1.5rem;
+}
+
+.content li {
+  margin-top: 0.5rem;
+}
+
+/* Inline code */
+.content code {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.9em;
+  background: color-mix(in srgb, var(--foreground) 10%, transparent);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+}
+
+/* Fenced code blocks (Shiki via CodeBlock) */
+.content pre {
+  margin: 1.5rem 0;
+  padding: 1.25rem;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+.content pre code {
+  background: transparent;
+  padding: 0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  border-radius: 0;
+}
+
+/* Horizontal rules */
+.content hr {
+  border: none;
+  border-top: 1px solid color-mix(in srgb, var(--foreground) 15%, transparent);
+}
+
+/* Images */
+.content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Tables */
+.content table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.content th,
+.content td {
+  border: 1px solid color-mix(in srgb, var(--foreground) 20%, transparent);
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.content th {
+  background: color-mix(in srgb, var(--foreground) 5%, transparent);
+  font-weight: 600;
+}
