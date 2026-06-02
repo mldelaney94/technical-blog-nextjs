@@ -4,12 +4,6 @@ import Link from 'next/link'
 import { ComponentPropsWithoutRef, JSX } from 'react'
 
 import { Pre } from '@/components/code-block'
-import FullBleedPicture from '@/components/full-bleed-picture'
-import { Callout, ColorMixer, Counter } from '@/components/interactive-demo'
-import Private from '@/components/private'
-import ColourSwatches from '@/content/assets/my-fashion-thoughts/colourswatches'
-import { ExponentialChart } from '@/content/assets/my-review-of-dispatch/exponential-chart'
-import BlockQuotes from '@/content/assets/open-throat-henry-hoke/blockquotes'
 
 // Heading component with level-based top margins
 type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6
@@ -28,13 +22,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     ...components,
     // Custom components
-    BlockQuotes,
-    Callout,
-    ColorMixer,
-    ColourSwatches,
-    Counter,
-    ExponentialChart,
-    FullBleedPicture,
     // MDX element overrides
     h1: (props: ComponentPropsWithoutRef<'h1'>) => <Heading level={1} {...props} />,
     h2: (props: ComponentPropsWithoutRef<'h2'>) => <Heading level={2} {...props} />,
@@ -45,7 +32,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     Image,
     Link,
     pre: Pre,
-    Private,
   }
 }
 
