@@ -5,6 +5,52 @@ export const metadata = {
   tags: [],
 }
 
+The amount of yak-shaving that has gone on to create this subdomain and try and figure out my needs for it has truly become rather funny to me, so I have decided to notate it for posterity.
+
+# Reference style
+
+At first, I decided I would use [Wikipedia's reference style](https://en.wikipedia.org/wiki/Wikipedia:Citing_sources), which allows URL highlighting to occur for intra-Wikipedia references (other Wikipedia pages) and otherwise uses a system of referencing which is not strictly defined, but instead is inconsistent between articles as noted in their [citing sources](https://en.wikipedia.org/wiki/Wikipedia:Citing_sources) page:
+
+"Each article should use one citation method or style throughout. If an article already has citations, preserve consistency by using that method or seek consensus on the talk page before changing it (the principle is reviewed at § Variation in citation methods)." (accessed Jun 3 2026)
+
+And honestly what's good for ole Wikipedia is good enough for me. So I just need to decide on something. I want it to be simple, componentable, and ... full-reference, for completeness and to eliminate any edge cases. Some Wikipedia articles have a references and a citations section which seems a bit redundant but I understand that it makes pages shorter.
+
+Without thinking too hard about it, I have decided to adopt the IEEE style for citations, as it is nominally (literally) related to what this blog should be writing about.
+
+For instance, let us examine a reference we would want to make, part of an RFC:
+
+https://www.rfc-editor.org/info/rfc1034/#section-3.6.2
+
+We would reference it as a technical report:
+P. Mockapetris, "STD 13: Domain names - concepts and facilities", RFC Editor, RFC 1034, Nov. 1987. [Online], Available: https://www.rfc-editor.org/info/rfc1034/#section-3.6.2. [Accessed June 3 2026]
+
+and I would write Section 3.6.2 next to it? I don't really agree with that, if it has a fragment then I want to use it for brevity so I will include that in the URL even though it doesn't fit the IEEE guidelines.
+
+## The reference component
+
+I decided on a complicated component because I decided that I wanted a pass component that would reflect a two-pass approach to referencing. The first pass is during the writing of a post, where I'm just chucking down references and websites as I use them into the page and trying to stay in the writing flow.
+
+The second pass is where I actually clean them up and write references for them. Websites and books are not deterministic so it would be silly to attempt some sort of auto-formatter (given a URL, attempts to create a bibliographic reference), not that it would be impossible per se.
+
+This means that the actual Bibliography in code will look like:
+
+/// put some code stuff here, must make a codeblock component my god
+
+but behind the scenes, it is doing a dictionary lookup and rendering the text. This doesn't really matter for the computers purposes, its more for mine. If by coincidence I ever re-use the same reference, I will know. Which is nothing short of fun.
+
+The last part is another component that needs to work in tandem with the reference component, the superscript component that sends you to the same url with a fragment appended that is for the numbered reference, and that on mouseover displays a box with the reference text in it so that you don't actually have to click it.
+
 # CNAMEs and subdomains
 
+This blog resides at a subdomain of [mldelaney94.com](mdelaney94.com). A subdomain is a domain who's name ends another domain.[1]
+
+Sources:
+[Post on server fault](https://serverfault.com/questions/613829/why-cant-a-cname-record-be-used-at-the-apex-aka-root-of-a-domain)
+
 # Major library choices and why
+
+
+### References
+---
+
+[1] P. Hoffman, K. Fujiwara, "BCP 219: DNS Terminology," RFC Editor, RFC 9499, Mar. 2024. [Online], Available: https://www.rfc-editor.org/rfc/rfc9499.html#section-2-1.38. [Accessed June 3 2026]

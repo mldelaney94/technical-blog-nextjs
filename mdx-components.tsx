@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ComponentPropsWithoutRef, JSX } from 'react'
 
-import { Pre } from '@/components/code-block'
+import { CodeBlock, Pre } from '@/components/code-block'
 
 // Heading component with level-based top margins
 type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6
