@@ -3,6 +3,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ComponentPropsWithoutRef, JSX } from 'react'
 
+import { CodeBlock, Pre } from '@/components/code-block'
+import { Quote } from '@/components/quote'
+import { Bibliography, Ref } from '@/components/references'
+
 // Heading component with level-based top margins
 type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6
 type HeadingTag = `h${HeadingLevel}`
@@ -19,8 +23,8 @@ const headingMargins: Record<HeadingLevel, string> = {
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     ...components,
-    // Custom components
-    // MDX element overrides
+    Bibliography,
+    CodeBlock,
     h1: (props: ComponentPropsWithoutRef<'h1'>) => <Heading level={1} {...props} />,
     h2: (props: ComponentPropsWithoutRef<'h2'>) => <Heading level={2} {...props} />,
     h3: (props: ComponentPropsWithoutRef<'h3'>) => <Heading level={3} {...props} />,
@@ -29,6 +33,10 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h6: (props: ComponentPropsWithoutRef<'h6'>) => <Heading level={6} {...props} />,
     Image,
     Link,
+    // MDX element overrides
+    pre: Pre,
+    Quote,
+    Ref,
   }
 }
 

@@ -5,6 +5,8 @@ import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { JSX } from 'react'
 
+import StyledComponentsRegistry from '@/components/styled-components-registry'
+
 const geistSans = Geist({
   subsets: ['latin'],
   variable: '--font-geist-sans',
@@ -45,7 +47,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+        <StyledComponentsRegistry>
+          {children}
+        </StyledComponentsRegistry>
       </body>
       <SpeedInsights />
     </html>

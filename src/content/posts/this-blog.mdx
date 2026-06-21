@@ -5,52 +5,99 @@ export const metadata = {
   tags: [],
 }
 
+<Bibliography items={[
+  {
+    authors: ['P. Hoffman', 'K. Fujiwara'],
+    title: 'BCP 219: DNS Terminology',
+    publisher: 'RFC Editor',
+    reportNumber: 'RFC 9499',
+    date: '2024-03-01',
+    url: 'https://www.rfc-editor.org/rfc/rfc9499.html#section-2-1.38',
+    accessed: '2026-06-03',
+  },
+  {
+    id: 'rfc1034',
+    authors: 'P. Mockapetris',
+    title: 'STD 13: Domain names - concepts and facilities',
+    publisher: 'RFC Editor',
+    reportNumber: 'RFC 1034',
+    date: '1987-11-01',
+    url: 'https://www.rfc-editor.org/info/rfc1034/#section-3.6.2',
+    accessed: '2026-06-03',
+  },
+  {
+    id: 'serverfault',
+    url: 'https://serverfault.com/questions/613829/why-cant-a-cname-record-be-used-at-the-apex-aka-root-of-a-domain',
+    accessed: '2026-06-03',
+  },
+]}>
+
 The amount of yak-shaving that has gone on to create this subdomain and try and figure out my needs for it has truly become rather funny to me, so I have decided to notate it for posterity.
 
 # Reference style
 
 At first, I decided I would use [Wikipedia's reference style](https://en.wikipedia.org/wiki/Wikipedia:Citing_sources), which allows URL highlighting to occur for intra-Wikipedia references (other Wikipedia pages) and otherwise uses a system of referencing which is not strictly defined, but instead is inconsistent between articles as noted in their [citing sources](https://en.wikipedia.org/wiki/Wikipedia:Citing_sources) page:
 
-"Each article should use one citation method or style throughout. If an article already has citations, preserve consistency by using that method or seek consensus on the talk page before changing it (the principle is reviewed at § Variation in citation methods)." (accessed Jun 3 2026)
+<Quote accessed="2026-06-03">
+Each article should use one citation method or style throughout. If an article already has citations, preserve consistency by using that method or seek consensus on the talk page before changing it (the principle is reviewed at § Variation in citation methods).
+</Quote>
 
 And honestly what's good for ole Wikipedia is good enough for me. So I just need to decide on something. I want it to be simple, componentable, and ... full-reference, for completeness and to eliminate any edge cases. Some Wikipedia articles have a references and a citations section which seems a bit redundant but I understand that it makes pages shorter.
 
-Without thinking too hard about it, I have decided to adopt the IEEE style for citations, as it is nominally (literally) related to what this blog should be writing about.
+Without thinking too hard about it, I have decided to adopt the [IEEE style](https://pitt.libguides.com/citationhelp/ieee) for citations, as it is nominally (literally) related to what this blog should be writing about.
 
 For instance, let us examine a reference we would want to make, part of an RFC:
 
 https://www.rfc-editor.org/info/rfc1034/#section-3.6.2
 
-We would reference it as a technical report:
+We would reference it as a technical report:<Ref n={2} />
+
 P. Mockapetris, "STD 13: Domain names - concepts and facilities", RFC Editor, RFC 1034, Nov. 1987. [Online], Available: https://www.rfc-editor.org/info/rfc1034/#section-3.6.2. [Accessed June 3 2026]
 
 and I would write Section 3.6.2 next to it? I don't really agree with that, if it has a fragment then I want to use it for brevity so I will include that in the URL even though it doesn't fit the IEEE guidelines.
 
 ## The reference component
 
-I decided on a complicated component because I decided that I wanted a pass component that would reflect a two-pass approach to referencing. The first pass is during the writing of a post, where I'm just chucking down references and websites as I use them into the page and trying to stay in the writing flow.
+I decided on a two-pass approach to referencing. The first pass is during the writing of a post, where I'm just chucking down references and websites as I use them and trying to stay in the writing flow. The second pass is where I fill in whatever bibliographic fields I can find. Websites and books are not deterministic so it would be silly to attempt some sort of auto-formatter that guesses metadata from a URL alone — not that it would be impossible per se — but the formatter can still produce a valid IEEE citation from partial information.
 
-The second pass is where I actually clean them up and write references for them. Websites and books are not deterministic so it would be silly to attempt some sort of auto-formatter (given a URL, attempts to create a bibliographic reference), not that it would be impossible per se.
+The whole post is wrapped in a `<Bibliography>` component. You pass it an ordered array of reference objects; position in the array is the citation number. The first entry is `<Ref n={1} />`, the second is `<Ref n={2} />`, and so on. An optional `id` field is for my benefit during drafting. Readers only ever see the number.
 
-This means that the actual Bibliography in code will look like:
+Each item is a plain object with whatever fields you have. A formatter turns that into an IEEE reference string for the bibliography and for `<Ref>` tooltips. You do not write the formatted citation yourself. Pass authors, title, publisher, `reportNumber`, `date`, `url`, `accessed`, and so on — omit anything you do not have yet. Dates and accessed values are ISO-8601; they render as IEEE expects.
 
-/// put some code stuff here, must make a codeblock component my god
+In code, a post looks like this:
 
-but behind the scenes, it is doing a dictionary lookup and rendering the text. This doesn't really matter for the computers purposes, its more for mine. If by coincidence I ever re-use the same reference, I will know. Which is nothing short of fun.
+<CodeBlock language="jsx">{`<Bibliography items={[
+  {
+    authors: ['P. Hoffman', 'K. Fujiwara'],
+    title: 'BCP 219: DNS Terminology',
+    publisher: 'RFC Editor',
+    reportNumber: 'RFC 9499',
+    date: '2024-03-01',
+    url: 'https://www.rfc-editor.org/rfc/rfc9499.html#section-2-1.38',
+    accessed: '2026-06-03',
+  },
+  { id: 'serverfault', url: 'https://serverfault.com/questions/613829/...' },
+]}>
+  ...post body with <Ref n={1} /> inline...
 
-The last part is another component that needs to work in tandem with the reference component, the superscript component that sends you to the same url with a fragment appended that is for the numbered reference, and that on mouseover displays a box with the reference text in it so that you don't actually have to click it.
+  ### References
+</Bibliography>`}</CodeBlock>
+
+The component wraps the post, registers the array for `<Ref>` lookups, and appends the numbered bibliography list after its children. Put a `### References` heading inside the wrapper where you want the section to start.
+
+During the first pass, an entry might be just a `url`. See entry three in this post's own bibliography. During the second pass, I add authors, title, and the rest. The array order stays the same, so `<Ref n={3} />` keeps pointing at the right entry.
+
+In the body, `<Ref n={1} />` renders a superscript link to `#ref-1` on the same page. Hovering shows the full reference text in a tooltip so you don't have to click through. For example: subdomain<Ref n={1} />.
 
 # CNAMEs and subdomains
 
-This blog resides at a subdomain of [mldelaney94.com](mdelaney94.com). A subdomain is a domain who's name ends another domain.[1]
+This blog resides at a subdomain of [mldelaney94.com](mdelaney94.com). A subdomain is a domain who's name ends another domain.<Ref n={1} />
 
-Sources:
-[Post on server fault](https://serverfault.com/questions/613829/why-cant-a-cname-record-be-used-at-the-apex-aka-root-of-a-domain)
+On CNAME records at the apex of a domain, see<Ref n={3} />.
 
 # Major library choices and why
 
 
 ### References
----
 
-[1] P. Hoffman, K. Fujiwara, "BCP 219: DNS Terminology," RFC Editor, RFC 9499, Mar. 2024. [Online], Available: https://www.rfc-editor.org/rfc/rfc9499.html#section-2-1.38. [Accessed June 3 2026]
+</Bibliography>
