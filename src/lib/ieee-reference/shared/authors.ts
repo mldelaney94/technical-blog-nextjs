@@ -1,12 +1,26 @@
+import type { ReferenceItem } from '../types.ts'
+
+const ET_AL_THRESHOLD = 3
+
 export function formatAuthors(
   authors?: string | string[],
-  suffix?: string,
+  options: { listAllAuthors?: boolean, suffix?: string } = {},
 ): string {
+  const { listAllAuthors = false, suffix } = options
+
   if (!authors) {
     return suffix ?? ''
   }
 
-  const list = typeof authors === 'string' ? [authors] : authors
+  if (typeof authors === 'string') {
+    if (/,\s*et al\.?/i.test(authors)) {
+      return suffix ? `${authors}, ${suffix}` : authors
+    }
+
+    return suffix ? `${authors}, ${suffix}` : authors
+  }
+
+  const list = authors.filter(Boolean)
 
   if (list.length === 0) {
     return suffix ?? ''
@@ -21,8 +35,20 @@ export function formatAuthors(
     return suffix ? `${names}, ${suffix}` : names
   }
 
+  if (!listAllAuthors && list.length >= ET_AL_THRESHOLD) {
+    const first = suffix ? `${list[0]}, ${suffix}` : list[0]
+    return `${first}, et al.`
+  }
+
   const names = `${list.slice(0, -1).join(', ')}, and ${list.at(-1)}`
   return suffix ? `${names}, ${suffix}` : names
+}
+
+export function formatAuthorsFromItem(
+  item: Pick<ReferenceItem, 'authors' | 'listAllAuthors'>,
+  suffix?: string,
+): string {
+  return formatAuthors(item.authors, { listAllAuthors: item.listAllAuthors, suffix })
 }
 
 export function formatEditors(editor?: string | string[]): string | undefined {

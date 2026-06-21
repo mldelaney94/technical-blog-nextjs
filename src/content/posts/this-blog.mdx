@@ -62,7 +62,7 @@ I decided on a two-pass approach to referencing. The first pass is during the wr
 
 The whole post is wrapped in a `<Bibliography>` component. You pass it an ordered array of reference objects; position in the array is the citation number. The first entry is `<Ref n={1} />`, the second is `<Ref n={2} />`, and so on. An optional `id` field is for my benefit during drafting. Readers only ever see the number.
 
-Each item is a plain object with whatever fields you have. A formatter turns that into an IEEE reference string for the bibliography and for `<Ref>` tooltips. You do not write the formatted citation yourself. Pass authors, title, publisher, `reportNumber`, `date`, `url`, `accessed`, and so on — omit anything you do not have yet. Dates and accessed values are ISO-8601; they render as IEEE expects.
+Each item is a plain object with whatever fields you have. A formatter turns that into an IEEE reference string for the bibliography and for `<Ref>` tooltips. You do not write the formatted citation yourself. Pass `authors`, `title`, `publisher`, `reportNumber`, `date`, `url`, `accessed`, and so on — omit anything you do not have yet. Dates and accessed values are ISO-8601; they render as IEEE expects.
 
 In code, a post looks like this:
 
@@ -96,7 +96,11 @@ This blog resides at a subdomain of [mldelaney94.com](mdelaney94.com). A subdoma
 On CNAME records at the apex of a domain, see<Ref n={3} />.
 
 # Major library choices and why
+`Styled-components` because I hate CSS formatting in .css files
 
+`NextJS` simply due to familiarity - I wanted to get started quickly
+
+`Vercel Hosting` because its free for the Hobby tier and is very plug-and-play.
 
 ### References
 

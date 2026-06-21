@@ -1,4 +1,4 @@
-import { formatAuthors, formatEditors } from '../shared/authors.ts'
+import { formatAuthorsFromItem, formatEditors } from '../shared/authors.ts'
 import { formatPublicationDate } from '../shared/dates.ts'
 import {
   formatEdition,
@@ -10,7 +10,7 @@ import {
 import type { ReferenceFormatter } from '../types.ts'
 
 export const formatChapter: ReferenceFormatter = item => joinParts([
-  formatAuthors(item.authors),
+  formatAuthorsFromItem(item),
   quoted(item.title),
   item.bookTitle ? `in ${item.bookTitle}` : undefined,
   formatEdition(item.edition),

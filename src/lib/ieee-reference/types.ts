@@ -25,6 +25,7 @@ export type ReferenceItem = {
   issue?: string | number
   journal?: string
   kind?: ReferenceKind
+  listAllAuthors?: boolean
   location?: string
   pages?: string
   patentNumber?: string
