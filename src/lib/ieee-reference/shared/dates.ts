@@ -1,3 +1,5 @@
+import 'temporal-polyfill/global'
+
 export function formatPublicationDate(date?: string): string | undefined {
   if (!date) {
     return undefined

@@ -1,3 +1,5 @@
+import 'temporal-polyfill/global'
+
 export function formatAccessedDate(iso8601: string): string {
   const dateOnly = iso8601.split('T')[0]
   const date = Temporal.PlainDate.from(dateOnly)
