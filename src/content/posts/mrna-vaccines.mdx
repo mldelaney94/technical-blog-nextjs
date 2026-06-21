@@ -6,9 +6,102 @@ export const metadata = {
 }
 
 <Bibliography items={[
+  {
+    id: 'gavi',
+    url: 'https://www.gavi.org/vaccineswork/what-are-protein-subunit-vaccines-and-how-could-they-be-used-against-covid-19',
+    accessed: '2026-06-21'
+  },
+  {
+    id: 'king-vaccine-race',
+    authors: 'M. L. King',
+    title: 'How manufacturing won or lost the COVID-19 vaccine race',
+    journal: 'Vaccine',
+    volume: 42,
+    issue: 5,
+    pages: '1004-1012',
+    date: '2024-02-15',
+    url: 'https://www.sciencedirect.com/science/article/pii/S0264410X23014779',
+  },
+  {
+    id: 'patton-wa-deaths',
+    authors: ['K. Patton', 'L. Downs', 'C. Cooke', 'J. White', 'V. Kueppers'],
+    title: 'Investigation of deaths following COVID-19 vaccination in Western Australia',
+    journal: 'Pathology',
+    volume: 54,
+    pages: 'S9',
+    date: '2022-03-01',
+    url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8810232/',
+  },
+  {
+    id: 'tga-weekly-safety-2021-12-16',
+    authors: 'Australian Government Department of Health, Therapeutic Goods Administration',
+    title: 'COVID-19 vaccine weekly safety report – 16-12-2021',
+    date: '2021-12-16',
+    url: 'https://www.tga.gov.au/periodic/covid-19-vaccine-weekly-safety-report-16-12-2021',
+    accessed: '2021-12-16',
+  },
+  {
+    id: 'worldometers-covid',
+    title: 'COVID-19 Coronavirus Pandemic',
+    url: 'https://www.worldometers.info/coronavirus/',
+    accessed: '2026-06-21',
+  }
 ]}>
 
-# MRNA
+# RNA and DNA
 
+DNA is the molecule that contains the genetic code of living organisms.
+
+RNA is a class of molecules. There are various different types of RNA; mRNA (Messenger RNA) being one of them.
+
+# Cytoplasm, ribosomes and the nucleus
+
+![Human cell with nucleus and cytoplasm](/mrna-vaccines/human_cell.png)
+
+The cytoplasm is the fluid inside the cell.
+
+Ribosomes are used to create proteins and exist dispersed throughout the cytoplasm.
+
+The nucleus contains all the cells DNA.
+
+# mRNA
+
+Messenger RNA is used in protein creation, where it carries the instructions from the DNA to the ribosomes.
+
+# Cell division
+
+One form of cell division occurs as such:
+DNA is transcribed into mRNA inside the nucleus. This mRNA travels to the cytoplasm, where ribosomes read it and produce proteins.
+
+# How does this information relate to the idea of mRNA vaccines?
+
+We see that for one to prove that mRNA vaccines change our genes, it would have to penetrate the nucleus, and then selectively edit the DNA strands. However, mRNA is not capable of editing DNA, instead, as soon as mRNA finds it way into a cytoplasm, it will be read by ribosomes and used to create proteins. A single mRNA strand can be read multiple times, but will eventually degrade, whereupon the cell will recycle it into raw nucleotides.
+
+# How do mRNA vaccines work?
+
+mRNA encodes instructions for one specific protein. When we inject you with the vaccine, it enters the (generally, as its shot into the arm) muscle cell's cytoplasm and is picked up by the ribosomes, whereupon they produce, for awhile, a protein. The term 'spike protein' is specific to coronaviruses, but mRNA can be used to create any sort of protein. As long as the virus has proteins the immune system can see and remember and the virus doesn't mutate them too fast, you can make an effective mRNA vaccine.
+
+# Different types of vaccines
+
+Whole inactivated
+Live-attenuated
+Protein subunit
+mRNA
+
+Whole-inactivated means the bacteria have been killed. This makes it very safe, and gives exposure to many parts of the virus, making for broad protection. However, it does not induce a strong immune response because heating the virus to death damages the viruses surface proteins and because it is not actually infecting you, the immune system does not react strongly. As well, creating them requires making lots of the unattenuated virus in a lab and killing it as the first step in the supply chain.
+
+Live-attenuated vaccines have a weakened version of the virus in them. They are cost effective to make and give a strong immune response. However, they are difficult to distribute because of strict refrigeration requirements.
+
+Protein subunit vaccines use (kind of like mRNA vaccines) a specific protein of the virus. This is extremely safe compared to live-attenuated viruses, which may not be safe for immunocompromised individuals. They do not produce the strongest immune response however, and normally require boosters. Their biggest weakness however, is their manufacturing time AND cost, which is the highest of all vaccines. They are manufactured by inserting the genetic code for a protein into yeast cells, which then make the protein. This is a complex process, requiring purification steps and large vats called bioreactors.<Ref n={1} />
+
+mRNA vaccines use mRNA to instruct cells to make a viral protein. They are very safe like protein subunit vaccines, however they are much FASTER to manufacture (mRNA can be made purely from chemical reactions, this is not necessarily cheap). However, because your own cells make the protein, your body reacts more strongly than subunit, knowing that its ribosomes have been hijacked. As well, the payload is larger than subunit, because mRNA cells take hours to days to degrade within the cell, giving time for lots of viral protein to be made. mRNA vaccines have strict cold chain supply line requirements (which is why once they're opened they have to be used or binned within a short period of time). They cannot be used to make every part of the virus and so some parts of the immune system cannot be utilised by them. They also tend to cause more side-effects like sore arms and fatigue (because the immune system becomes busy).
+
+This does not exhaustively cover all forms of vaccination.
+
+# Death from covid vaccines
+
+We must remember first of all that there were several different types of Covid vaccines produced. AstraZeneca, Pfizer/BioNTech, Sinovac, Moderna, and Sinopharm.<Ref n={2} /> Of these, <b>only</b> Pfizer and Moderna were mRNA vaccines.
+
+Like all medicines, COVID-19 vaccines can cause side effects. Most are mild — sore arm, headache, fever — but a few rare serious ones have been linked to specific platforms. AstraZeneca has been associated with thrombosis with thrombocytopenia syndrome, Guillain-Barré syndrome, and immune thrombocytopenia.<Ref n={3} /> Pfizer and Moderna have been linked to myocarditis and pericarditis.<Ref n={4} /> When attributing a death to vaccination, it matters which vaccine was used. As of December 2021, Australia's TGA had identified 11 deaths linked to AstraZeneca vaccination — eight from thrombosis with thrombocytopenia syndrome, two from Guillain-Barré syndrome, and one from immune thrombocytopenia.<Ref n={3} /> The protective benefits of vaccination continue to outweigh these risks. For context, COVID-19 itself had caused roughly 7 million reported deaths worldwide as of April 2024.<Ref n={5} />
 
 </Bibliography>
