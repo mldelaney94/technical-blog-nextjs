@@ -3,7 +3,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ComponentPropsWithoutRef, JSX } from 'react'
 
-import { CodeBlock, Pre } from '@/components/code-block'
+import { CodeBlock } from '@/components/code-block'
+import { FullBleedPicture } from '@/components/full-bleed-picture'
+import { Pre } from '@/components/mdx-pre'
 import { Quote } from '@/components/quote'
 import { Bibliography, Ref } from '@/components/references'
 
@@ -25,6 +27,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ...components,
     Bibliography,
     CodeBlock,
+    FullBleedPicture,
     h1: (props: ComponentPropsWithoutRef<'h1'>) => <Heading level={1} {...props} />,
     h2: (props: ComponentPropsWithoutRef<'h2'>) => <Heading level={2} {...props} />,
     h3: (props: ComponentPropsWithoutRef<'h3'>) => <Heading level={3} {...props} />,

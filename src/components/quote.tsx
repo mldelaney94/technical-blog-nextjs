@@ -22,7 +22,7 @@ export function Quote({
   accessed,
   children,
 }: {
-  accessed: string
+  accessed?: string
   children: ReactNode
 }): JSX.Element {
   return (
@@ -30,13 +30,17 @@ export function Quote({
       &ldquo;
       {children}
       &rdquo;
-      {' '}
-      <Accessed>
-        (accessed
-        {' '}
-        {formatAccessedDate(accessed)}
-        )
-      </Accessed>
+      {accessed ? (
+        <>
+          {' '}
+          <Accessed>
+            (accessed
+            {' '}
+            {formatAccessedDate(accessed)}
+            )
+          </Accessed>
+        </>
+      ) : null}
     </Figure>
   )
 }
