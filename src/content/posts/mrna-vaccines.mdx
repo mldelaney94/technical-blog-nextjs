@@ -56,6 +56,39 @@ export const metadata = {
     title: 'COVID-19 Coronavirus Pandemic',
     url: 'https://www.worldometers.info/coronavirus/',
     accessed: '2026-06-21',
+  },
+  {
+    id: 'premikha-singapore-vaccine-irr',
+    authors: ['M. Premikha', 'C. J. Chiew', 'W. E. Wei', 'Y. S. Leo', 'B. Ong', 'D. C. Lye', 'V. J. Lee', 'K. B. Tan'],
+    title: 'Comparative Effectiveness of mRNA and Inactivated Whole-Virus Vaccines Against Coronavirus Disease 2019 Infection and Severe Disease in Singapore',
+    journal: 'Clinical Infectious Diseases',
+    volume: 75,
+    issue: 8,
+    pages: '1442-1445',
+    date: '2022-10-15',
+    url: 'https://doi.org/10.1093/cid/ciac288',
+  },
+  {
+    id: 'cohen-clostridium-tetani',
+    authors: ['J. E. Cohen', 'R. Wang', 'R.-F. Shen', 'W. W. Wu', 'J. E. Keller'],
+    title: 'Comparative pathogenomics of Clostridium tetani',
+    journal: 'PLOS ONE',
+    volume: 12,
+    issue: 8,
+    pages: 'e0182909',
+    date: '2017-08-11',
+    url: 'https://doi.org/10.1371/journal.pone.0182909',
+  },
+  {
+    id: 'schiavo-tetanus-zinc',
+    authors: ['G. Schiavo', 'B. Poulain', 'O. Rossetto', 'F. Benfenati', 'L. Tauc', 'C. Montecucco'],
+    title: 'Tetanus toxin is a zinc protein and its inhibition of neurotransmitter release and protease activity depend on zinc',
+    journal: 'EMBO J.',
+    volume: 11,
+    issue: 10,
+    pages: '3577-3583',
+    date: '1992-10-01',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/1396558/',
   }
 ]}>
 
@@ -132,5 +165,51 @@ The vaccine liquid spreads through the fluid between your muscle cells. Immune c
 ### Hours
 
 A lymph node is where the immune system holds briefings. T cells circulate through constantly, each built to recognise a different shape. The dendritic cell waits until a T cell whose receptor fits the displayed peptide stops. If the match is confirmed, that one T cell begins to divide — over hours and days, becoming a small army of copies, all trained to recognise the same viral protein. Those activated T cells then seek out B cells and help them start making antibodies — proteins that stick to the virus and mark it for destruction. That antibody production takes days. But the chain is complete: protein in the arm → learning in the lymph node → antibodies in the blood. The vaccine gave the immune system a safe preview of one part of the virus.
+
+# The strength and efficacy of MRNA vaccines
+
+This is an interesting section. Because there's a lot that we can examine within it. I don't want it to be too long.
+
+First, as discussed above, we actually have multiple different types of vaccine for COVID-19, AstraZeneca, Pfizer/BioNTech, Sinovac, Moderna, and Sinopharm.<Ref n={3} />. Of all of those, only Pfizer and Moderna were mRNA, atleast one of them, Sinovac, was whole-inactivated virus. So, we should be able to discuss the efficacy of vaccination for COVID-19 specifically as a within-group study.
+
+### A note on statistics
+
+The goal of statistics in this exercise will be to help us understand which vaccine was better. For that we need to understand who got sick more often and whether they got sicker. To assess this, we use an abbreviation IRR, it stands for Incidence Rate Ratio, and is calculated to assess the ratio of new events between groups.
+
+All it is is you take how many people in a population got sick, compared with how many people in a different population got sick, and then you compare them:
+
+<Quote>Group A Count / Group B Count = X</Quote>
+
+So if X was 2, Group A would have twice as many people who got sick.
+
+### IRR of Sinovac vs Moderna vs Pfizer
+
+So its pretty simple, for those who received 2 shots of:
+
+<Quote>After adjusting for age, gender, ethnicity, residency status, socioeconomic status, time since second dose, and daily infection rate, individuals vaccinated with Sinovac-CoronaVac were more likely to be infected (adjusted IRR, 2.37; 95% CI, 2.29–2.46), and more likely to develop severe disease (adjusted IRR, 4.59; 95% CI, 3.25–6.48); individuals vaccinated with Sinopharm were also at higher risk of infection (adjusted IRR, 1.62; 95% CI, 1.43–1.85), while individuals vaccinated with Moderna were at lower risk of severe disease (adjusted IRR, 0.42; 95% CI, 0.25–0.70), compared with those who received Pfizer-BioNTech/Comirnaty (Table 1).<Ref n={7}/></Quote>
+
+Okay, lets just digest that:
+
+After adjustment, Sinovac recipients had roughly 2.4× the infection rate of Pfizer recipients.
+
+They were also much more likely to get severe COVID: about 4.6× the rate of severe disease compared with Pfizer. The gap for severe disease is larger than for infection.
+
+### But what about the dosage?
+
+You might think that sinovac was only one dose, but was not. It was a multi-part vaccine. In that study<Ref n={7}/> they controlled for 2 doses of all the vaccines they compared.
+
+# Why do different vaccines require different intervals between reapplication?
+
+This is a great question. There are two things that dictate vaccination intervals, the first is how fast the virus tends to mutate. For Covid, that was relatively fast. But tetanus specifically was brought up and we can treat it as a special case: tetanus only requires a vaccine rarely because tetanus bacteria mutate very slowly. In fact, a paper from 2017 compared tetanus bacteria from 1962 to now and found:
+
+<Quote>The analyses indicate that Harvard vaccine strains are remarkably similar... No mutations were observed in TetR or TetX providing assurance that genetic drift has not compromised tetanus toxin antigenicity used in vaccine manufacture.<Ref n={8} /></Quote>
+
+So it doesn't mutate that often.
+
+The second thing that drives vaccination rates is the strength of the immune reaction. Now this is where we have to get into specifics. Because the tetanus vaccine doesn't actually vaccinate against the bacteria at all. It vaccinates against a toxin that the bacteria produce. They chemically inactivate it and introduce it to the body. The tetanus toxin in fact a protein<Ref n={9} />, so in fact, this can be considered a form of subunit vaccine.
+
+Why vaccinate against the toxin? It reliably produces a strong immune response when coupled with an inflammatory formulation that heightens the immune response, and because the toxin kills you quicker than the infection, and I guess that its just lucky that the toxin is specifically a protein, which our immune system's special cells can interact with easily.
+
+So basically, for COVID, much like the flu, it simply mutates quite fast an for awhile was deadly enough that getting boosters to new variants was good medical advice. Although its still good medical advice now, much like getting your flu shot, we are lucky that it has mutated to a less deadly disease.
 
 </Bibliography>
