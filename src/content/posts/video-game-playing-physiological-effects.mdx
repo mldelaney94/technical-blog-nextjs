@@ -1,0 +1,134 @@
+export const metadata = {
+  title: "Video game playing physiological effects",
+  date: "2026-08-16T09:31:58",
+  description: "",
+  tags: [],
+}
+
+<Bibliography items={[
+  {
+    id: 'green-bavelier-visuospatial-attention',
+    authors: ['C. S. Green', 'D. Bavelier'],
+    title: 'Effect of Action Video Games on the Spatial Distribution of Visuospatial Attention',
+    journal: 'Journal of Experimental Psychology: Human Perception and Performance',
+    volume: 32,
+    issue: 6,
+    pages: '1465-1478',
+    date: '2006-12-01',
+    url: 'https://doi.org/10.1037/0096-1523.32.6.1465',
+  },
+  {
+    id: 'eriksen-noise-letters',
+    authors: ['B. A. Eriksen', 'C. W. Eriksen'],
+    title: 'Effects of noise letters upon the identification of a target letter in a nonsearch task',
+    journal: 'Perception & Psychophysics',
+    volume: 16,
+    pages: '143-149',
+    date: '1974-01-01',
+    url: 'https://doi.org/10.3758/BF03203267',
+  },
+  {
+    id: 'lavie-selective-attention-under-load',
+    authors: 'N. Lavie',
+    title: 'Distracted and confused?: Selective attention under load',
+    journal: 'Trends in Cognitive Sciences',
+    volume: 9,
+    issue: 2,
+    pages: '75-82',
+    date: '2005-02-01',
+    url: 'https://doi.org/10.1016/j.tics.2004.12.004',
+  },
+]}>
+
+I heard that my friend was going to drive to a place today, so that they could drive there again a few days later because they find new routes when driving stressful.
+
+I wondered immediately if this would be trainable in some way to decrease the cognitive load they must be experiencing whilst driving to feel that way. And obviously video games come to mind. So I wanted to deep dive on a paper from 2006.<Ref n={1} />
+
+## The vocabularic context
+
+### Visual acuity vs visual attention.
+
+How much detail you can see as measured in eye tests, versus focusing visual attention on relevant stimuli and rejecting irrelevant stimuli.
+
+### UFOV
+
+useful field of view.
+
+### Perceptual load paradigm
+
+The use of task irrelevant distractors to negatively affect performance on a task. Depending on how much performance is affected, one can determine how good they are at ignoring irrelevant stimuli.
+
+'Load' in this sense is just 'the number of distractors'. This paradigm also must distinguish between 'distractors that aid' and 'distractors that impede'. That is, some distractors actually aid responders.
+
+For instance, lets say that you must press left if L is shown on screen, or right if R. And the experimental stimulus looks like so:
+
+A A R A A - where you have to react to the middle letter. Your brain cannot fully stop itself from processing the other letters, and as the letters get closer, it will interfere more and more.<Ref n={2} />
+
+Well if you were to see R R R R R, then your brain is minimally interfered with.
+
+### Load theory of selective attention and cognitive control
+
+As put forth in the seminal work by Lavie,<Ref n={3} />, high perceptual load can eliminate distractor processing, however high load on 'frontal' cognitive processes INCREASES distractor processing. Maybe this is why I find it takes a long time for new skills to become pleasant, because I engage so much of my frontal cognitive processing.
+
+### Eccentricity
+
+0° - right in the center
+
+10° - 10 degrees away from center
+
+Keep in mind this is meant to be measured from where your eyes are located. Human eyes have around 200 to 220 degrees of vision IF YOU MOVE THEM. However if you don't, its smaller.
+
+## Experiments performed
+
+### Experiment 1
+
+![Perceptual load experimental design](/video-game-physiological-effects/perceptual-load-expermental-design.png)
+
+They basically asked them to determine which of two possible target shapes, square or diamond, appears inside one of the circles. Various distractors were added at the periphery, at the centre, and inside the other circles.
+
+They found that speed-wise, no statistical difference was found between NVGPs and VGPs.
+
+![Perceptual load results table](/video-game-physiological-effects/table_of_perceptual_load_results.png)
+
+However, they did find in-group differences that were interesting, but important to break them down correctly.
+
+### High load, low load, peripheral and central distractors
+
+So many variables, it becomes hard to write about them. But here is my attempt:
+
+VGP's, were faster to answer when the distractors were compatible, for both peripheral and central distractions, and for both high and low-load. NVGP's, however, where only quicker to answer for compatible distractors in low-load conditions. This indicates that the NVGP's, in high load, stop processing the distractors both for center and peripheral.
+
+<Quote>VGPs demonstrate a clear compatibility effect even under conditions of high load, whereas NVGPs cease to show an effect of the distractors at these loads.</Quote>
+
+This indicators greater attentional resources available for the VGP's, that is utilised as in "Load theory of selective attention and cognitive control" <Ref n={3}/>, that is our attention system:
+
+<Quote>processes all stimuli in an automatic mandatory fashion
+(as in late-selection views) until it runs out of capacity</Quote>
+
+### Experiment 2
+
+They do a UFOV experiment - basically, it asks you to locate a target element on the screen placed inside some area on the screen, with lots of distracting elements everywhere. It tries to flash the elements at the screen so fast that you can't physically respond to them, that's why the animation flashes in such a jarring way. The idea is that you should not move your eyes, in order to determine your useful FOV.
+
+![UFOV task animation](/video-game-physiological-effects/ufov2.gif)
+
+<Quote>thought to provide an index of the distribution of visual attention across the visual scene</Quote>
+
+![UFOV comparison between VGP and NVGP](/video-game-physiological-effects/ufov_vgp_vs_nvgp.png)
+
+Gamers win - and they win big. They win the distractor case and the non-distractor case. This indicates that they have greater attentional resources processing their visual field.
+
+### Experiment 3
+
+<Quote>Whereas our hypothesis predicts that extensive video-game playing leads to these enhanced skills, it could also be the case that VGPs have inherently better visual skills and/or were somehow genetically endowed with greater attentional abilities. To demonstrate a causative role of action video-game play in these effects, we trained a group of NVGPs on an action video game in Experiment 3. If the effects are due to action video-game experience, similar enhancements in localization performance should be observed following training.</Quote>
+
+<Quote>The study enrolled 32 NVGPs, none of whom had taken part in Experiments 1 or 2, who were equally and randomly divided between the experimental and control groups. The criteria for NVGP remained the same as in all previous experiments. All participants underwent training as described below. In all, 8 women and 8 men (mean age = 21.3, all right-handed) made up the final experimental group, and the final control group consisted of 9 women and 7 men (mean age = 21.0, 15 right-handed).</Quote>
+
+<Quote>NVGPs were divided into two training groups. Half underwent video-game training using an action video game, whereas the others played a game that made heavy demands on visuomotor coordination but, unlike action video games, did not require the participant to process multiple objects at once at a fast pace.</Quote>
+
+![UFOV results after video game training](/video-game-physiological-effects/ufov_post_video_game_training.png)
+
+Playing action video games specifically increases attentional capacity such that distractors are less distracting.
+
+Notably, they increased their performance even at the extremes of 30 degree eccentricities, which was beyond the eccentricity of the video games that they played, indicating a generalisation of UFOV ability to action video games.
+
+</Bibliography>

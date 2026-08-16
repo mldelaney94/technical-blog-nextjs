@@ -1,0 +1,92 @@
+export const metadata = {
+  title: "Working With AI",
+  date: "2026-07-18T16:43:02",
+  description: "",
+  tags: [],
+}
+
+<Bibliography items={[
+  {
+    id: 'ziru-claude-api-vs-subscription',
+    authors: 'ZIRU',
+    title: 'Why I Stopped Paying API Bills and Saved 36x on Claude (The Math Will Shock You)',
+    date: '2026-01-30',
+    url: 'https://levelup.gitconnected.com/why-i-stopped-paying-api-bills-and-saved-36x-on-claude-the-math-will-shock-you-46454323346c',
+    accessed: '2026-07-18',
+  },
+]}>
+
+# Working with AI Agents - a review
+
+We want to token-maxx. How can we set off a multi-hour prompt and maximise the value delivered from it?
+
+We view the model as a stochastic worker within a control system. The key words being within a control system. So what does that system consist of?
+
+## The harness
+
+The AI harness provides tools, memory, guardrails and workflow control. Claude Code is the AI wrapped in its own harness for instance. If you want to use a different harness for Claude, you must use API mode, which bills approximately 36x more as of January 2026.<Ref n={1} />
+
+So if we're more or less stuck with Claude Subscription and its harness, our only other choice is to build a harness around it.
+
+## The Basics
+
+Claude's basics are:
+
+### Rules
+
+At the moment I use a Socratic [Claude prompt](https://github.com/mldelaney94/dotfiles/blob/master/claude/CLAUDE.md) as a system-wide coding rule. I have used this rule for so long I basically don't know what its like to use the vanilla harness prompt anymore. It attempts to force you to reason through what you want to do, forcing you to define and understand what the limitations of the systems that you're trying to invoke.
+
+However, its slow, it takes hours sometimes to break down and research all the concepts to understand what to do. Its valuable, because learning is valuable. But it also tends to presuppose that you're using an IDE and manually looking at the code that its creating.
+
+### Skills
+
+Skills are essentially hooks that the AI can use when a trigger phrase is used. They can be paired with scripts to run so it can reliably be used to analyse the output of them.
+
+They can be very powerful because they're essentially the 'functions' of the AI agent world.
+
+### Commands (Cursor)
+
+Like skills but it does not run automatically.
+
+### Subagents
+
+The primary currency of any AI system is its context-window, the more efficiently you can use its context window, the better the results. The reasoning behind agents is that its just an automated abstraction that people would already do - an AI asks a question, we open a new chat window, paste the question, wait for the response, and then paste that response back to the other AI.
+
+This saves a lot of tokens from the main AI. It also allows for the use of cheaper AI's to do various things like invoke skills or other tools without polluting the expensive AI.
+
+## Autonomous Agent Orchestrators
+
+Augmenting your AI harness gives a lot of flexibility. What am I doing often or what context do I constantly need? Make a skill. Are the processes I'm doing following a kind of rote formula? Create subagents.
+
+We can see very quickly that it would be tempting to create lots of different subagents, including a meta-agent called the orchestrator, and give tasks to it and let 'er rip, delegating to the subagents and verifying their outputs. There are a few problems with this:
+
+1. Persistent state - what is recorded and how between agents, is there some way for another agent to double-check against a canonical record?
+2. Without deterministic aspects to the orchestration, the 'stochastic' part of the model immediately means that it could start with a different subagent for the same prompt, or a small error could propagate through the session from the very start
+3. Can the agents verify their own results? How do we make that deterministic?
+
+## Dynamic Workflows
+
+In order to improve results, we have to have some sort of deterministic process. [Dynamic workflows](https://code.claude.com/docs/en/workflows) allow you to orchestrate AI's through scripting, and there are a few different architectures:
+
+### Sequence
+
+The code calls Agent A, output goes to Agent B, to Agent C, and so on. Literally just a pipeline of agent to agent.
+
+### Router
+
+A rules-based router (not AI) examines the input and dispatches to the correct agent
+
+### Planner -> Executor
+
+Essentially sequence but you make a plan with the Agent that is recorded and then parse that to the executor, and the executor is run step by step in a deterministic fashion
+
+See [Kiln](https://github.com/Fredasterehub/kiln)
+
+### Parallel
+
+Multiple agents working at once, and a final merge step at the end combines their results
+
+
+## References
+
+</Bibliography>
